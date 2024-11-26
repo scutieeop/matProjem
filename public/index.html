@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YTMTAL Matematik Projesi</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #047857;
+            --secondary-color: #10b981;
+            --bg-gradient: linear-gradient(135deg, #047857 0%, #10b981 100%);
+        }
+
+        body {
+            background-color: #f0f7f4;
+            overflow-x: hidden;
+        }
+
+        .gradient-header {
+            background: var(--bg-gradient);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .card {
+            transition: all 0.4s ease;
+            transform: perspective(1000px);
+        }
+
+        .card:hover {
+            transform: scale(1.035) rotateX(3deg);
+            box-shadow: 0 25px 40px rgba(0,0,0,0.1);
+        }
+
+        .icon-box {
+            transition: all 0.3s ease;
+        }
+
+        .icon-box:hover {
+            transform: translateY(-10px);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-900">
+    <header class="gradient-header text-white py-20 mb-12 relative">
+        <div class="container mx-auto text-center relative z-10">
+            <h1 class="text-5xl font-extrabold tracking-wide mb-4 transform transition-all duration-500 hover:scale-105">
+                Yeşilırmak Ticaret Mesleki Ve Teknik Anadolu Lisesi
+            </h1>
+            <p class="text-xl text-white opacity-80">Matematiği Keşfetme ve Öğrenme Projesi</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8">
+            <section class="card bg-white rounded-2xl shadow-2xl p-8 border-2 border-green-100 hover:border-green-300 transition-all duration-300">
+                <div class="text-center mb-6">
+                    <i class="ri-lightbulb-line text-6xl text-green-600 mb-4"></i>
+                    <h2 class="text-3xl font-bold text-green-700">Proje Amacı</h2>
+                </div>
+                <p class="text-gray-700 leading-relaxed text-lg text-center">
+                    Matematik öğrenimini eğlenceli ve interaktif hale getirerek öğrencilerin 
+                    akademik başarılarını artırmak ve matematiksel düşünme becerilerini geliştirmek.
+                </p>
+            </section>
+
+            <section class="card bg-white rounded-2xl shadow-2xl p-8 border-2 border-green-100 hover:border-green-300 transition-all duration-300">
+                <div class="text-center mb-6">
+                    <i class="ri-team-line text-6xl text-green-600 mb-4"></i>
+                    <h2 class="text-3xl font-bold text-green-700">Proje Ekibi</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-center bg-green-50 p-4 rounded-lg">
+                        <i class="ri-user-3-line text-green-600 mr-4 text-2xl"></i>
+                        <div>
+                            <strong class="text-lg text-green-800">Mustafa</strong> 
+                            <p class="text-sm text-gray-500">[Programlama]</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center bg-green-50 p-4 rounded-lg">
+                        <i class="ri-user-3-line text-green-600 mr-4 text-2xl"></i>
+                        <div>
+                            <strong class="text-lg text-green-800">Berkay</strong>
+                            <p class="text-sm text-gray-500">[Programlama]</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center bg-green-50 p-4 rounded-lg">
+                        <i class="ri-user-3-line text-green-600 mr-4 text-2xl"></i>
+                        <div>
+                            <strong class="text-lg text-green-800">Furkan</strong>
+                            <p class="text-sm text-gray-500">[Tanıtım]</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center bg-green-50 p-4 rounded-lg">
+                        <i class="ri-user-3-line text-green-600 mr-4 text-2xl"></i>
+                        <div>
+                            <strong class="text-lg text-green-800">Berat</strong>
+                            <p class="text-sm text-gray-500">[Tanıtım]</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card bg-white rounded-2xl shadow-2xl p-8 border-2 border-green-100 hover:border-green-300 transition-all duration-300">
+                <div class="text-center mb-6">
+                    <i class="ri-book-open-line text-6xl text-green-600 mb-4"></i>
+                    <h2 class="text-3xl font-bold text-green-700">Quiz Projesi</h2>
+                </div>
+                <p class="text-gray-700 leading-relaxed text-lg text-center">
+                    Kullanıcılar, interaktif quiz uygulaması ile matematiksel becerilerini 
+                    test edebilir ve öğrenme süreçlerini eğlenceli bir şekilde geliştirebilirler.
+                </p>
+                
+            </section>
+        </div>
+    </main>
+    <center><a href="isim" class="inline-block px-6 py-3 text-lg font-bold text-white bg-green-700 rounded-full shadow-md hover:bg-green-600 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 transition-all duration-300">
+        Butona Tıkla
+    </a>
+    </center>
+    <footer class="bg-gradient-to-r from-green-700 to-green-900 text-white py-8 mt-12">
+        <div class="container mx-auto text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://www.instagram.com/tokatyesilirmakmtal" class="icon-box hover:text-green-300 transition-all">
+                    <i class="ri-instagram-line text-3xl"></i>
+                </a>
+                <a href="https://x.com/i/flow/login?redirect_after_login=%2Ftokat_ymtal" class="icon-box hover:text-green-300 transition-all">
+                    <i class="ri-twitter-fill text-3xl"></i>
+                </a>
+            </div>
+            <p class="text-sm opacity-90">Yeşilırmak Ticaret Mesleki Ve Teknik Anadolu Lisesi © 2024</p>
+        </div>
+    </footer>
+</body>
+</html>

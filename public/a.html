@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YTMTAL Matematik Quiz Projesi</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #047857;
+            --secondary: #10b981;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--dark), #1a2639);
+            color: var(--light);
+        }
+
+        .slides-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-content {
+            max-width: 1200px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .title {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            text-shadow: 0 0 20px rgba(4, 120, 87, 0.5);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            transform: scale(0.8);
+            opacity: 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            transform: scale(0.8);
+            opacity: 0;
+        }
+
+        .icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            background: var(--primary);
+            width: 0;
+            transition: width 0.5s linear;
+        }
+
+        .navigation {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: var(--primary);
+            transform: scale(1.3);
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(100vw, -100vh) rotate(360deg); }
+        }
+
+        .slide.active .title {
+            animation: slideUp 1s forwards;
+        }
+
+        .slide.active .subtitle {
+            animation: slideUp 1s 0.3s forwards;
+        }
+
+        .slide.active .feature-card,
+        .slide.active .team-card {
+            animation: scaleIn 0.8s forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .start-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .slide.active .start-button {
+            animation: slideUp 1s 0.7s forwards;
+        }
+
+        .start-button:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="slides-container">
+        <!-- Karşılama Slaytı -->
+        <div class="slide active">
+            <div class="slide-content">
+                <h1 class="title">Yeşilırmak Ticaret Mesleki ve Teknik Anadolu Lisesi</h1>
+                <p class="subtitle">Matematik Quiz Projesi</p>
+                <div class="feature-card">
+                    <i class="ri-presentation-line icon"></i>
+                    <p class="text-xl">Matematiği Keşfetme ve Öğrenme Yolculuğu</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proje Amacı Slaytı -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2 class="title">Proje Amacı</h2>
+                <div class="feature-card">
+                    <i class="ri-lightbulb-line icon"></i>
+                    <p class="text-xl">Matematik öğrenimini eğlenceli ve interaktif hale getirerek öğrencilerin 
+                    akademik başarılarını artırmak ve matematiksel düşünme becerilerini geliştirmek.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Özellikler Slaytı -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2 class="title">Özellikler</h2>
+                <div class="feature-grid">
+                    <div class="feature-card" style="animation-delay: 0.2s">
+                        <i class="ri-pencil-ruler-2-line icon"></i>
+                        <h3>Çizim Tahtası</h3>
+                        <p>Fikirlerinizi görselleştirin</p>
+                    </div>
+                    <div class="feature-card" style="animation-delay: 0.4s">
+                        <i class="ri-question-line icon"></i>
+                        <h3>İnteraktif Sorular</h3>
+                        <p>Dinamik soru-cevap sistemi</p>
+                    </div>
+                    <div class="feature-card" style="animation-delay: 0.6s">
+                        <i class="ri-trophy-line icon"></i>
+                        <h3>Puan Sistemi</h3>
+                        <p>Performansınızı takip edin</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proje Ekibi Slaytı -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2 class="title">Proje Ekibi</h2>
+                <div class="team-grid">
+                    <div class="team-card" style="animation-delay: 0.2s">
+                        <i class="ri-code-line icon"></i>
+                        <h3 class="text-xl mb-2">Programlama Ekibi</h3>
+                        <p>Mustafa</p>
+                        <p>Berkay</p>
+                    </div>
+                    <div class="team-card" style="animation-delay: 0.4s">
+                        <i class="ri-presentation-line icon"></i>
+                        <h3 class="text-xl mb-2">Tanıtım Ekibi</h3>
+                        <p>Furkan</p>
+                        <p>Berat</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Başlangıç Slaytı -->
+        <div class="slide">
+          <div class="slide-content">
+              <h2 class="title">Yapay Zeka Teknolojileri</h2>
+              <div class="feature-grid">
+                  <div class="feature-card">
+                      <i class="ri-cpu-line icon"></i>
+                      <p>Derin Öğrenme Algoritmaları</p>
+                  </div>
+                  <div class="feature-card">
+                      <i class="ri-compass-3-line icon"></i>
+                      <p>Akıllı Yönlendirme Sistemi</p>
+                  </div>
+                  <div class="feature-card">
+                      <i class="ri-bubble-chart-line icon"></i>
+                      <p>Doğal Dil İşleme</p>
+                  </div>
+              </div>
+              <div class="feature-card" style="margin-top: 2rem">
+                  <i class="ri-instagram-line icon"></i>
+                  <p>Bizi takip edin: @tokatyesilirmakmtal</p>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+    <div class="progress-bar"></div>
+    <div class="navigation"></div>
+
+    <script>
+      // Previous JavaScript code remains exactly the same
+      const slides = document.querySelectorAll('.slide');
+      const progressBar = document.querySelector('.progress-bar');
+      const navigation = document.querySelector('.navigation');
+      let currentSlide = 0;
+      const slideInterval = 5000; // 5 saniye her slayt için
+      let slideTimer;
+
+      // Navigasyon noktaları oluştur
+      slides.forEach((_, index) => {
+          const dot = document.createElement('div');
+          dot.className = 'nav-dot' + (index === 0 ? ' active' : '');
+          dot.addEventListener('click', () => goToSlide(index));
+          navigation.appendChild(dot);
+      });
+
+      function updateNavDots() {
+          document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+              dot.classList.toggle('active', index === currentSlide);
+          });
+      }
+
+      function goToSlide(index) {
+          slides[currentSlide].classList.remove('active');
+          currentSlide = index;
+          slides[currentSlide].classList.add('active');
+          updateNavDots();
+          resetProgress();
+      }
+
+      function nextSlide() {
+          goToSlide((currentSlide + 1) % slides.length);
+      }
+
+      function resetProgress() {
+          progressBar.style.width = '0%';
+          clearInterval(slideTimer);
+          startProgress();
+      }
+
+      function startProgress() {
+          let progress = 0;
+          const increment = 100 / (slideInterval / 10);
+          
+          slideTimer = setInterval(() => {
+              progress += increment;
+              progressBar.style.width = `${progress}%`;
+              
+              if (progress >= 100) {
+                  nextSlide();
+              }
+          }, 10);
+      }
+
+      // Parçacıklar ekle
+      const particlesContainer = document.createElement('div');
+      particlesContainer.className = 'particles';
+      document.body.appendChild(particlesContainer);
+
+      for (let i = 0; i < 20; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          particle.style.width = Math.random() * 30 + 10 + 'px';
+          particle.style.height = particle.style.width;
+          particle.style.top = Math.random() * 100 + 'vh';
+          particle.style.left = Math.random() * 100 + 'vw';
+          particle.style.animationDelay = Math.random() * 15 + 's';
+          particlesContainer.appendChild(particle);
+      }
+
+      // Sunumu başlat
+      startProgress();
+
+      // Klavye navigasyonu
+      document.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+              goToSlide((currentSlide + 1) % slides.length);
+          } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+              goToSlide(currentSlide === 0 ? slides.length - 1 : currentSlide - 1);
+          }
+      });
+  </script>
+
+</body>
+</html>

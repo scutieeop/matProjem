@@ -1,0 +1,27 @@
+[
+    { 
+        "id": 1, 
+        "soru": "∫(2x + 3)dx işleminin sonucu nedir?", 
+        "secenekler": ["x² + 3x + C", "2x² + 3x + C", "x² + 3x", "2x + 3"], 
+        "cevap": "x² + 3x + C",
+        "cozum": [
+            "1. Adım: Her terimi ayrı ayrı integralini alalım",
+            "2. Adım: ∫2x dx + ∫3 dx",
+            "3. Adım: 2∫x dx + 3∫dx",
+            "4. Adım: 2(x²/2) + 3x + C",
+            "5. Adım: x² + 3x + C"
+        ]
+    },
+    { 
+        "id": 2, 
+        "soru": "d/dx(x³ - 2x + 5) türevinin sonucu nedir?", 
+        "secenekler": ["3x² - 2", "x² - 2", "3x - 2", "3x² + 2"], 
+        "cevap": "3x² - 2",
+        "cozum": [
+            "1. Adım: Her terimin türevini alalım",
+            "2. Adım: d/dx(x³) - d/dx(2x) + d/dx(5)",
+            "3. Adım: 3x² - 2 + 0",
+            "4. Adım: 3x² - 2"
+        ]
+    }
+]
